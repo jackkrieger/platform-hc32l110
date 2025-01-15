@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackkrieger/platform-hc32l1xx.git#hc32l1xx-support"
+    "url": "https://github.com/jackkrieger/platform-hc32l1xx.git"
   },
   "frameworks": {
     "ddl": {
@@ -36,7 +36,7 @@
     },
     "framework-hc32l1xx-ddl": {
       "type": "framework",
-      "version": "https://github.com/jackkrieger/framework-hc32l1xx-ddl.git#hc32l1xx-support"
+      "version": "https://github.com/jackkrieger/framework-hc32l1xx-ddl.git"
     }
   }
 }
