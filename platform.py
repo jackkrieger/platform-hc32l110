@@ -14,7 +14,7 @@
 
 from platformio.managers.platform import PlatformBase
 
-class Hc32f46xPlatform(PlatformBase):
+class Hc32l1xxPlatform(PlatformBase):
     def configure_default_packages(self, variables, targets):
         if variables.get("board"):
             upload_protocol = variables.get("upload_protocol", self.board_config(variables.get("board")).get("upload.protocol", ""))

@@ -1,0 +1,22 @@
+{
+  "name": "Generic HC32L110x4",
+  "url": "https://www.xhsc.com.cn/category/%e8%b6%85%e4%bd%8e%e8%83%bd%e8%80%97/hc32l110",
+  "vendor": "HUADA Semiconductor",
+  "frameworks": [
+    "arduino",
+    "ddl"
+  ],
+  "build": {
+    "variant": "generic_hc32l110x4",
+    "cpu": "cortex-m0",
+    "f_cpu": "4000000"
+  },
+  "upload": {
+    "maximum_size": 16384,
+    "maximum_ram_size": 2048
+  },
+  "debug": {
+    "pyocd_target": "hc32l110x4",
+    "svd_path": "HDSC_HC32L110.svd"
+  }
+}
