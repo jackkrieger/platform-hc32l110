@@ -1,8 +1,8 @@
 {
-  "name": "hc32l1xx",
+  "name": "hc32l110",
   "version": "0.1.0",
-  "title": "HC32L1XX",
-  "description": "HC32L1XX",
+  "title": "HC32L110",
+  "description": "HC32L110",
   "homepage": "",
   "license": "Apache-2.0",
   "keywords": ["dev-platform", "ARM", "Cortex-M", "HC32"],
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackkrieger/platform-hc32l1xx.git"
+    "url": "https://github.com/jackkrieger/platform-hc32l110.git"
   },
   "frameworks": {
     "ddl": {
-      "package": "framework-hc32l1xx-ddl",
+      "package": "framework-hc32l110-ddl",
       "script": "builder/frameworks/ddl.py",
-      "description": "HC32L1xx Device Driver Library",
+      "description": "HC32L110 Device Driver Library",
       "homepage": "",
-      "title": "HC32L1xx DDL"
+      "title": "HC32L110 DDL"
     }
   },
   "packages": {
@@ -32,11 +32,11 @@
       "type": "debugger",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.3600.0"
+      "version": "^2.3600.0"
     },
-    "framework-hc32l1xx-ddl": {
+    "framework-hc32l110-ddl": {
       "type": "framework",
-      "version": "https://github.com/jackkrieger/framework-hc32l1xx-ddl.git"
+      "version": "https://github.com/jackkrieger/framework-hc32l110-ddl.git"
     }
   }
 }
