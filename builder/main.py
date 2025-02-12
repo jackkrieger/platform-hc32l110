@@ -35,7 +35,10 @@ env.Replace(
     # note: size regexprs are defined in framework build, as they
     # depend on the linker script used
 
-    PROGSUFFIX=".elf"
+    PROGSUFFIX=".elf",
+
+    UPLOADER=join("$PIOPACKAGES_DIR", "tool-bar", "uploader"),
+    UPLOADCMD="$UPLOADER $SOURCES"
 )
 
 # configure builder
@@ -60,13 +63,13 @@ env.Append(
 )
 
 
-# Allow user to override via pre:script
-if env.get("PROGNAME", "program") == "program":
-    env.Replace(PROGNAME="firmware")
+# # Allow user to override via pre:script
+# if env.get("PROGNAME", "program") == "program":
+#     env.Replace(PROGNAME="firmware")
 
-if not env.get("PIOFRAMEWORK"):
-    sys.stderr.write("Error: PIOFRAMEWORK is not defined")
-    env.Exit(1)
+# if not env.get("PIOFRAMEWORK"):
+#     sys.stderr.write("Error: PIOFRAMEWORK is not defined")
+#     env.Exit(1)
 
 
 #
@@ -116,29 +119,14 @@ if upload_protocol in debug_tools:
     if isinstance(offset_address, str):
         offset_address = int(offset_address, 16) if offset_address.startswith("0x") else int(offset_address)
 
-    maximum_size = board.get("upload.maximum_size", 262144)
+    maximum_size = board.get("upload.maximum_size", 32 * 1024)
 
     assert isinstance(offset_address, int)
     assert isinstance(maximum_size, int)
 
-    # if maximum_size is > 256K, pyocd_target should be 'hc32f460xe'
-    # for <= 256K, pyocd_target should be 'hc32f460xc'
-    # above 512K, there is no target available
-    if maximum_size > (512 * 1024):
-        # flash size > 512K
-        raise ValueError(f"Flash size {maximum_size} is too large for any HC32F460 target!")
-    elif maximum_size > (256 * 1024):
-        # 256K < flash size <= 512K
-        expected_pyocd_target = "hc32f460xe"
-    else:
-        # flash size <= 256K
-        expected_pyocd_target = "hc32f460xc"
-
-    if pyocd_target != expected_pyocd_target:
-        sys.stderr.write(
-            f"Warning: pyOCD target '{pyocd_target}' is not expected for {maximum_size} flash size. Updating to '{expected_pyocd_target}'\n"
-        )
-        pyocd_target = expected_pyocd_target
+    # if maximum_size > (4 * 1024):
+    #     # flash size > 4K
+    #     raise ValueError(f"Flash size {maximum_size} is too large for any HC32L110 target!")
     
     # get pyocd tool path
     pyocd_path = join(platform.get_package_dir("tool-pyocd"), "pyocd.py")
