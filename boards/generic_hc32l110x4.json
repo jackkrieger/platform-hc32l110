@@ -16,7 +16,7 @@
     "maximum_ram_size": 2048
   },
   "debug": {
-    "pyocd_target": "hc32l110x4",
+    "pyocd_target": "hc32l110",
     "svd_path": "HDSC_HC32L110.svd"
   }
 }
